@@ -1,0 +1,15 @@
+#start-quiz{
+  padding: 50px;
+  text-align: center;
+  size: 500px;
+}
+.ans-button{
+  padding: 25px;
+  height: 30px;
+  width: 30px;
+  background-color: darkslategray;
+  text-decoration-color: floralwhite;
+}
+li{
+  padding: 25px
+}
