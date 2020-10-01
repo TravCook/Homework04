@@ -8,7 +8,7 @@ var totalCorrect = 0;
 var secondCountdown;
 var currQuestionIdx = 0;
 var userSave;
-var quizContent = [
+var quizContent = [ //These objects are every question, every answer for every question, and if it is the correct answer
   {
     question: "WHAT DOES HTML STAND FOR?",
     answers: [
@@ -56,11 +56,11 @@ var quizContent = [
   },
   
 ]
-var answerButtons = ["A","B","C","D"]
-var userName = prompt("Please enter your inititals");
+var answerButtons = ["A","B","C","D"] //This array is purely for labelling the answer buttons
+var userName = prompt("Please enter your inititals"); // ask the user for their initials at the start of the application
 var userInfo;
 
-function save(){
+function save(){ //This function saves the user data locally so it can be recalled another time
   userSave = confirm("Would you like to save your high score?")
   if(userSave){
     userInfo = [{Initials: userName},{Score: totalCorrect}]
@@ -71,7 +71,7 @@ function save(){
 }
 
 var countdownStart = 6;
-function quizCountdown(){
+function quizCountdown(){ //This is an intial countdown before the start of the quiz
   
   var initialCountdown = setInterval(function(){
   countdownStart--;
@@ -85,7 +85,7 @@ function quizCountdown(){
   }, 1000)
   
 }
-function displayQuestion(){
+function displayQuestion(){ //This function renders every question independantly and each answer and a button for each answer
   var currQuestion = quizContent [currQuestionIdx]
 
   questionText.textContent = currQuestion.question; //display the question
@@ -101,9 +101,7 @@ function displayQuestion(){
     answerList.addEventListener("click", checkAnswer)
   }
 }
-
-
-function quizTimer(){
+function quizTimer(){ // This is the full timer for the quiz
   countdownStart = 30;
   secondCountdown = setInterval(function(){
   countdownStart--;
@@ -118,7 +116,7 @@ function quizTimer(){
   },1000)
 }
 
-function checkAnswer(e){
+function checkAnswer(e){ //This function confirms whether the selected answer is correct, then subtracts 5 seconds if its wrong and adds points if its right
     var isCorrect = e.target.attributes[1].value
     console.log(isCorrect)
     switch (isCorrect){
@@ -143,4 +141,4 @@ function checkAnswer(e){
     }
 }
 
-quizStart.addEventListener("click", quizCountdown)
+quizStart.addEventListener("click", quizCountdown) //This starts the initial countdown when the button is clicked
