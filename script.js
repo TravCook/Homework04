@@ -25,8 +25,12 @@ var quizContent = [
   }
 ]
 var answerButtons = ["A","B","C","D"]
+var userName = prompt("Please enter your inititals");
+var userInfo = [{Initials: userName},{Score: totalCorrect}]
 
-
+function save(){
+  localStorage.setItem("LastGame", JSON.stringify(userInfo))
+}
 
 var countdownStart = 6;
 function quizCountdown(){
@@ -68,6 +72,10 @@ function quizTimer(){
     clearInterval(secondCountdown);
     timeEl.textContent = "Game Over!"
     timeEl.innerText = ("You got  "+ totalCorrect +" right!")
+    var userSave = confirm("Would you like to save your high score?")
+    if(userSave){
+      save();
+    }
   } 
   },10)
 }
@@ -96,7 +104,5 @@ function checkAnswer(e){
         break;
     }
 }
-//local storage
-
 
 quizStart.addEventListener("click", quizCountdown)
